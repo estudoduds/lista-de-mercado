@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#f7f6f1" />
+		<meta name="description" content="Organize sua lista de mercado com praticidade." />
+		<title>Lista de mercado</title>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="app.js" defer></script>
+	</head>
+	<body>
+		<div class="app-shell">
+			<header class="topbar">
+				<a class="brand" href="#inicio" aria-label="Lista de mercado, início">
+					<span class="brand-mark" aria-hidden="true">f.</span>
+					<span>feira<span class="brand-dot">.</span></span>
+				</a>
+				<div class="topbar-note"><span class="status-dot"></span> SUA LISTA, DO SEU JEITO</div>
+			</header>
+
+			<main id="inicio">
+				<section class="intro" aria-labelledby="page-title">
+					<div>
+						<p class="eyebrow" id="today-label">LISTA DA SEMANA</p>
+						<h1 id="page-title">Mercado em<br /><span>ordem.</span></h1>
+					</div>
+					<p class="intro-note">Tudo o que você precisa,<br />sem deixar nada para trás.</p>
+				</section>
+
+				<section class="summary" aria-label="Resumo da lista">
+					<div class="summary-item">
+						<span class="summary-label">NA LISTA</span>
+						<strong id="total-count">0</strong>
+						<span class="summary-caption">produtos</span>
+					</div>
+					<div class="summary-divider" aria-hidden="true"></div>
+					<div class="summary-item">
+						<span class="summary-label">NO CARRINHO</span>
+						<strong id="done-count">0</strong>
+						<span class="summary-caption">concluídos</span>
+					</div>
+					<div class="summary-divider" aria-hidden="true"></div>
+					<div class="progress-track" aria-label="Progresso da lista">
+						<span id="progress-bar"></span>
+					</div>
+				</section>
+
+				<div class="workspace">
+					<aside class="entry-panel" aria-labelledby="form-title">
+						<div class="panel-heading">
+							<span class="section-index">01 / ADICIONAR</span>
+							<h2 id="form-title">O que está<br />faltando?</h2>
+						</div>
+
+						<form id="item-form">
+							<label class="field-label" for="product-select">Produto</label>
+							<input id="product-select" name="product" type="text" list="product-suggestions" placeholder="Digite ou escolha um produto" maxlength="70" required autocomplete="off" />
+							<datalist id="product-suggestions">
+								<!-- Carnes e proteínas -->
+								<option value="Carne" data-emoji="🥩" label="🥩 Carne"></option>
+								<option value="Carne bovina" data-emoji="🥩" label="🥩 Carne bovina"></option>
+								<option value="Carne moída" data-emoji="🥩" label="🥩 Carne moída"></option>
+								<option value="Bife" data-emoji="🥩" label="🥩 Bife"></option>
+								<option value="Alcatra" data-emoji="🥩" label="🥩 Alcatra"></option>
+								<option value="Contrafilé" data-emoji="🥩" label="🥩 Contrafilé"></option>
+								<option value="Patinho" data-emoji="🥩" label="🥩 Patinho"></option>
+								<option value="Acém" data-emoji="🥩" label="🥩 Acém"></option>
+								<option value="Fraldinha" data-emoji="🥩" label="🥩 Fraldinha"></option>
+								<option value="Costela" data-emoji="🍖" label="🍖 Costela"></option>
+								<option value="Carne para panela" data-emoji="🍲" label="🍲 Carne para panela"></option>
+								<option value="Frango" data-emoji="🍗" label="🍗 Frango"></option>
+								<option value="Peito de frango" data-emoji="🍗" label="🍗 Peito de frango"></option>
+								<option value="Coxa" data-emoji="🍗" label="🍗 Coxa"></option>
+								<option value="Sobrecoxa" data-emoji="🍗" label="🍗 Sobrecoxa"></option>
+								<option value="Asa" data-emoji="🍗" label="🍗 Asa"></option>
+								<option value="Filé de frango" data-emoji="🍗" label="🍗 Filé de frango"></option>
+								<option value="Linguiça" data-emoji="🌭" label="🌭 Linguiça"></option>
+								<option value="Salsicha" data-emoji="🌭" label="🌭 Salsicha"></option>
+								<option value="Bacon" data-emoji="🥓" label="🥓 Bacon"></option>
+								<option value="Presunto" data-emoji="🥓" label="🥓 Presunto"></option>
+								<option value="Mortadela" data-emoji="🥓" label="🥓 Mortadela"></option>
+								<option value="Peito de peru" data-emoji="🍗" label="🍗 Peito de peru"></option>
+								<option value="Salame" data-emoji="🥓" label="🥓 Salame"></option>
+								<option value="Peixes" data-emoji="🐟" label="🐟 Peixes"></option>
+								<option value="Peixe" data-emoji="🐟" label="🐟 Peixe"></option>
+								<option value="Sardinha" data-emoji="🐟" label="🐟 Sardinha"></option>
+								<option value="Atum" data-emoji="🐟" label="🐟 Atum"></option>
+								<option value="Camarão" data-emoji="🦐" label="🦐 Camarão"></option>
+								<option value="Carne suína" data-emoji="🥩" label="🥩 Carne suína"></option>
+								<option value="Bisteca" data-emoji="🥩" label="🥩 Bisteca"></option>
+								<option value="Pernil" data-emoji="🍖" label="🍖 Pernil"></option>
+								<option value="Lombo" data-emoji="🥩" label="🥩 Lombo"></option>
+
+								<!-- Leites e derivados -->
+								<option value="Leite" data-emoji="🥛" label="🥛 Leite"></option>
+								<option value="Leite integral" data-emoji="🥛" label="🥛 Leite integral"></option>
+								<option value="Leite desnatado" data-emoji="🥛" label="🥛 Leite desnatado"></option>
+								<option value="Leite semidesnatado" data-emoji="🥛" label="🥛 Leite semidesnatado"></option>
+								<option value="Leite em pó" data-emoji="🥛" label="🥛 Leite em pó"></option>
+								<option value="Leite condensado" data-emoji="🥛" label="🥛 Leite condensado"></option>
+								<option value="Creme de leite" data-emoji="🥛" label="🥛 Creme de leite"></option>
+								<option value="Queijo" data-emoji="🧀" label="🧀 Queijo"></option>
+								<option value="Queijo muçarela" data-emoji="🧀" label="🧀 Queijo muçarela"></option>
+								<option value="Queijo prato" data-emoji="🧀" label="🧀 Queijo prato"></option>
+								<option value="Queijo minas" data-emoji="🧀" label="🧀 Queijo minas"></option>
+								<option value="Parmesão" data-emoji="🧀" label="🧀 Parmesão"></option>
+								<option value="Requeijão" data-emoji="🧀" label="🧀 Requeijão"></option>
+								<option value="Cream cheese" data-emoji="🧀" label="🧀 Cream cheese"></option>
+								<option value="Manteiga" data-emoji="🧈" label="🧈 Manteiga"></option>
+								<option value="Margarina" data-emoji="🧈" label="🧈 Margarina"></option>
+								<option value="Iogurte" data-emoji="🥛" label="🥛 Iogurte"></option>
+								<option value="Bebida láctea" data-emoji="🥛" label="🥛 Bebida láctea"></option>
+								<option value="Coalhada" data-emoji="🥛" label="🥛 Coalhada"></option>
+
+								<!-- Arroz, feijão e grãos -->
+								<option value="Arroz" data-emoji="🍚" label="🍚 Arroz"></option>
+								<option value="Arroz branco" data-emoji="🍚" label="🍚 Arroz branco"></option>
+								<option value="Arroz integral" data-emoji="🍚" label="🍚 Arroz integral"></option>
+								<option value="Feijão" data-emoji="🫘" label="🫘 Feijão"></option>
+								<option value="Feijão preto" data-emoji="🫘" label="🫘 Feijão preto"></option>
+								<option value="Feijão carioca" data-emoji="🫘" label="🫘 Feijão carioca"></option>
+								<option value="Feijão branco" data-emoji="🫘" label="🫘 Feijão branco"></option>
+								<option value="Lentilha" data-emoji="🫘" label="🫘 Lentilha"></option>
+								<option value="Grão-de-bico" data-emoji="🫘" label="🫘 Grão-de-bico"></option>
+								<option value="Ervilha seca" data-emoji="🫛" label="🫛 Ervilha seca"></option>
+								<option value="Soja" data-emoji="🫘" label="🫘 Soja"></option>
+								<option value="Milho" data-emoji="🌽" label="🌽 Milho"></option>
+								<option value="Aveia" data-emoji="🌾" label="🌾 Aveia"></option>
+								<option value="Granola" data-emoji="🥣" label="🥣 Granola"></option>
+								<option value="Quinoa" data-emoji="🌾" label="🌾 Quinoa"></option>
+								<option value="Farinha de trigo" data-emoji="🌾" label="🌾 Farinha de trigo"></option>
+								<option value="Farinha de mandioca" data-emoji="🌾" label="🌾 Farinha de mandioca"></option>
+								<option value="Farinha de milho" data-emoji="🌽" label="🌽 Farinha de milho"></option>
+								<option value="Fubá" data-emoji="🌽" label="🌽 Fubá"></option>
+								<option value="Polvilho"></option>
+								<option value="Tapioca" data-emoji="🫓" label="🫓 Tapioca"></option>
+
+								<!-- Massas e molhos -->
+								<option value="Macarrão" data-emoji="🍝" label="🍝 Macarrão"></option>
+								<option value="Macarrão espaguete" data-emoji="🍝" label="🍝 Macarrão espaguete"></option>
+								<option value="Macarrão parafuso" data-emoji="🍝" label="🍝 Macarrão parafuso"></option>
+								<option value="Macarrão penne" data-emoji="🍝" label="🍝 Macarrão penne"></option>
+								<option value="Lasanha" data-emoji="🍝" label="🍝 Lasanha"></option>
+								<option value="Massa de pastel" data-emoji="🥟" label="🥟 Massa de pastel"></option>
+								<option value="Massa de pizza" data-emoji="🍕" label="🍕 Massa de pizza"></option>
+								<option value="Molho de tomate" data-emoji="🍅" label="🍅 Molho de tomate"></option>
+								<option value="Extrato de tomate" data-emoji="🥫" label="🥫 Extrato de tomate"></option>
+								<option value="Ketchup" data-emoji="🍅" label="🍅 Ketchup"></option>
+								<option value="Mostarda"></option>
+								<option value="Maionese" data-emoji="🥚" label="🥚 Maionese"></option>
+								<option value="Molho barbecue" data-emoji="🍖" label="🍖 Molho barbecue"></option>
+								<option value="Molho de pimenta" data-emoji="🌶️" label="🌶️ Molho de pimenta"></option>
+								<option value="Molho shoyu" data-emoji="🥣" label="🥣 Molho shoyu"></option>
+								<option value="Molho inglês"></option>
+								<option value="Pesto" data-emoji="🌿" label="🌿 Pesto"></option>
+
+								<!-- Pães e padaria -->
+								<option value="Pão" data-emoji="🍞" label="🍞 Pão"></option>
+								<option value="Pão francês" data-emoji="🥖" label="🥖 Pão francês"></option>
+								<option value="Pão de forma" data-emoji="🍞" label="🍞 Pão de forma"></option>
+								<option value="Pão integral" data-emoji="🍞" label="🍞 Pão integral"></option>
+								<option value="Pão de hambúrguer" data-emoji="🍔" label="🍔 Pão de hambúrguer"></option>
+								<option value="Pão de cachorro-quente" data-emoji="🌭" label="🌭 Pão de cachorro-quente"></option>
+								<option value="Bisnaguinha" data-emoji="🍞" label="🍞 Bisnaguinha"></option>
+								<option value="Torrada" data-emoji="🍞" label="🍞 Torrada"></option>
+								<option value="Croissant" data-emoji="🥐" label="🥐 Croissant"></option>
+								<option value="Bolo" data-emoji="🍰" label="🍰 Bolo"></option>
+								<option value="Sonho" data-emoji="🍩" label="🍩 Sonho"></option>
+								<option value="Rosquinha" data-emoji="🍩" label="🍩 Rosquinha"></option>
+
+								<!-- Frutas, verduras e legumes -->
+								<option value="Banana" data-emoji="🍌" label="🍌 Banana"></option>
+								<option value="Maçã" data-emoji="🍎" label="🍎 Maçã"></option>
+								<option value="Laranja" data-emoji="🍊" label="🍊 Laranja"></option>
+								<option value="Limão" data-emoji="🍋" label="🍋 Limão"></option>
+								<option value="Mamão" data-emoji="🍈" label="🍈 Mamão"></option>
+								<option value="Manga" data-emoji="🥭" label="🥭 Manga"></option>
+								<option value="Melancia" data-emoji="🍉" label="🍉 Melancia"></option>
+								<option value="Melão" data-emoji="🍈" label="🍈 Melão"></option>
+								<option value="Abacaxi" data-emoji="🍍" label="🍍 Abacaxi"></option>
+								<option value="Abacate" data-emoji="🥑" label="🥑 Abacate"></option>
+								<option value="Uva" data-emoji="🍇" label="🍇 Uva"></option>
+								<option value="Morango" data-emoji="🍓" label="🍓 Morango"></option>
+								<option value="Kiwi" data-emoji="🥝" label="🥝 Kiwi"></option>
+								<option value="Pera" data-emoji="🍐" label="🍐 Pera"></option>
+								<option value="Tomate" data-emoji="🍅" label="🍅 Tomate"></option>
+								<option value="Cebola" data-emoji="🧅" label="🧅 Cebola"></option>
+								<option value="Alho" data-emoji="🧄" label="🧄 Alho"></option>
+								<option value="Batata" data-emoji="🥔" label="🥔 Batata"></option>
+								<option value="Batata-doce" data-emoji="🍠" label="🍠 Batata-doce"></option>
+								<option value="Cenoura" data-emoji="🥕" label="🥕 Cenoura"></option>
+								<option value="Beterraba" data-emoji="🫜" label="🫜 Beterraba"></option>
+								<option value="Mandioca" data-emoji="🥔" label="🥔 Mandioca"></option>
+								<option value="Abóbora" data-emoji="🎃" label="🎃 Abóbora"></option>
+								<option value="Chuchu" data-emoji="🥒" label="🥒 Chuchu"></option>
+								<option value="Abobrinha" data-emoji="🥒" label="🥒 Abobrinha"></option>
+								<option value="Berinjela" data-emoji="🍆" label="🍆 Berinjela"></option>
+								<option value="Pimentão" data-emoji="🫑" label="🫑 Pimentão"></option>
+								<option value="Pepino" data-emoji="🥒" label="🥒 Pepino"></option>
+								<option value="Alface" data-emoji="🥬" label="🥬 Alface"></option>
+								<option value="Couve" data-emoji="🥬" label="🥬 Couve"></option>
+								<option value="Espinafre" data-emoji="🥬" label="🥬 Espinafre"></option>
+								<option value="Brócolis" data-emoji="🥦" label="🥦 Brócolis"></option>
+								<option value="Couve-flor" data-emoji="🥦" label="🥦 Couve-flor"></option>
+								<option value="Repolho" data-emoji="🥬" label="🥬 Repolho"></option>
+								<option value="Rúcula" data-emoji="🥬" label="🥬 Rúcula"></option>
+								<option value="Cheiro-verde" data-emoji="🌿" label="🌿 Cheiro-verde"></option>
+
+								<!-- Enlatados e conservas -->
+								<option value="Milho em conserva" data-emoji="🥫" label="🥫 Milho em conserva"></option>
+								<option value="Ervilha" data-emoji="🫛" label="🫛 Ervilha"></option>
+								<option value="Seleta de legumes" data-emoji="🥫" label="🥫 Seleta de legumes"></option>
+								<option value="Palmito" data-emoji="🥫" label="🥫 Palmito"></option>
+								<option value="Azeitona" data-emoji="🫒" label="🫒 Azeitona"></option>
+								<option value="Pepino em conserva" data-emoji="🥒" label="🥒 Pepino em conserva"></option>
+								<option value="Molho pronto" data-emoji="🥫" label="🥫 Molho pronto"></option>
+								<option value="Cogumelos" data-emoji="🍄" label="🍄 Cogumelos"></option>
+								<option value="Feijão enlatado" data-emoji="🥫" label="🥫 Feijão enlatado"></option>
+
+								<!-- Biscoitos e snacks -->
+								<option value="Biscoito recheado" data-emoji="🍪" label="🍪 Biscoito recheado"></option>
+								<option value="Biscoito água e sal" data-emoji="🍪" label="🍪 Biscoito água e sal"></option>
+								<option value="Biscoito cream cracker" data-emoji="🍪" label="🍪 Biscoito cream cracker"></option>
+								<option value="Biscoito maisena" data-emoji="🍪" label="🍪 Biscoito maisena"></option>
+								<option value="Biscoito de chocolate" data-emoji="🍪" label="🍪 Biscoito de chocolate"></option>
+								<option value="Cookies" data-emoji="🍪" label="🍪 Cookies"></option>
+								<option value="Waffer" data-emoji="🧇" label="🧇 Waffer"></option>
+								<option value="Bolacha" data-emoji="🍪" label="🍪 Bolacha"></option>
+								<option value="Pipoca" data-emoji="🍿" label="🍿 Pipoca"></option>
+								<option value="Biscoitos" data-emoji="🍪" label="🍪 Biscoitos"></option>
+								<option value="Batata chips" data-emoji="🥔" label="🥔 Batata chips"></option>
+								<option value="Salgadinhos" data-emoji="🥨" label="🥨 Salgadinhos"></option>
+								<option value="Amendoim" data-emoji="🥜" label="🥜 Amendoim"></option>
+								<option value="Castanhas" data-emoji="🥜" label="🥜 Castanhas"></option>
+								<option value="Nozes" data-emoji="🥜" label="🥜 Nozes"></option>
+
+								<!-- Chocolates e doces -->
+								<option value="Chocolate ao leite" data-emoji="🍫" label="🍫 Chocolate ao leite"></option>
+								<option value="Chocolate branco" data-emoji="🍫" label="🍫 Chocolate branco"></option>
+								<option value="Chocolate amargo" data-emoji="🍫" label="🍫 Chocolate amargo"></option>
+								<option value="Bombons" data-emoji="🍬" label="🍬 Bombons"></option>
+								<option value="Bis" data-emoji="🍫" label="🍫 Bis"></option>
+								<option value="Paçoca" data-emoji="🥜" label="🥜 Paçoca"></option>
+								<option value="Balas" data-emoji="🍬" label="🍬 Balas"></option>
+								<option value="Pirulitos" data-emoji="🍭" label="🍭 Pirulitos"></option>
+								<option value="Chicletes" data-emoji="🫧" label="🫧 Chicletes"></option>
+								<option value="Gelatina" data-emoji="🍮" label="🍮 Gelatina"></option>
+								<option value="Pudim" data-emoji="🍮" label="🍮 Pudim"></option>
+								<option value="Doce de leite" data-emoji="🍮" label="🍮 Doce de leite"></option>
+								<option value="Goiabada" data-emoji="🍯" label="🍯 Goiabada"></option>
+								<option value="Geleia" data-emoji="🍯" label="🍯 Geleia"></option>
+								<option value="Mel" data-emoji="🍯" label="🍯 Mel"></option>
+								<option value="Açúcar" data-emoji="🧂" label="🧂 Açúcar"></option>
+								<option value="Achocolatado" data-emoji="🥤" label="🥤 Achocolatado"></option>
+
+								<!-- Café da manhã -->
+								<option value="Café" data-emoji="☕" label="☕ Café"></option>
+								<option value="Café solúvel" data-emoji="☕" label="☕ Café solúvel"></option>
+								<option value="Chá" data-emoji="🍵" label="🍵 Chá"></option>
+								<option value="Cereais" data-emoji="🥣" label="🥣 Cereais"></option>
+								<option value="Torradas" data-emoji="🍞" label="🍞 Torradas"></option>
+
+								<!-- Temperos e ingredientes -->
+								<option value="Sal" data-emoji="🧂" label="🧂 Sal"></option>
+								<option value="Óleo" data-emoji="🫗" label="🫗 Óleo"></option>
+								<option value="Azeite" data-emoji="🫒" label="🫒 Azeite"></option>
+								<option value="Vinagre" data-emoji="🧴" label="🧴 Vinagre"></option>
+								<option value="Pimenta-do-reino" data-emoji="🌶️" label="🌶️ Pimenta-do-reino"></option>
+								<option value="Orégano" data-emoji="🌿" label="🌿 Orégano"></option>
+								<option value="Manjericão" data-emoji="🌿" label="🌿 Manjericão"></option>
+								<option value="Alecrim" data-emoji="🌿" label="🌿 Alecrim"></option>
+								<option value="Cominho" data-emoji="🧂" label="🧂 Cominho"></option>
+								<option value="Páprica" data-emoji="🌶️" label="🌶️ Páprica"></option>
+								<option value="Curry" data-emoji="🧂" label="🧂 Curry"></option>
+								<option value="Açafrão" data-emoji="🧂" label="🧂 Açafrão"></option>
+								<option value="Canela" data-emoji="🧂" label="🧂 Canela"></option>
+								<option value="Cravo" data-emoji="🧂" label="🧂 Cravo"></option>
+								<option value="Louro" data-emoji="🌿" label="🌿 Louro"></option>
+								<option value="Caldo de carne" data-emoji="🍲" label="🍲 Caldo de carne"></option>
+								<option value="Caldo de galinha" data-emoji="🍲" label="🍲 Caldo de galinha"></option>
+								<option value="Fermento" data-emoji="🧪" label="🧪 Fermento"></option>
+								<option value="Amido de milho" data-emoji="🌽" label="🌽 Amido de milho"></option>
+								<option value="Bicarbonato de sódio" data-emoji="🧂" label="🧂 Bicarbonato de sódio"></option>
+
+								<!-- Bebidas -->
+								<option value="Água" data-emoji="💧" label="💧 Água"></option>
+								<option value="Água com gás" data-emoji="💧" label="💧 Água com gás"></option>
+								<option value="Refrigerante" data-emoji="🥤" label="🥤 Refrigerante"></option>
+								<option value="Suco" data-emoji="🧃" label="🧃 Suco"></option>
+								<option value="Suco em pó" data-emoji="🧃" label="🧃 Suco em pó"></option>
+								<option value="Néctar" data-emoji="🧃" label="🧃 Néctar"></option>
+								<option value="Água de coco" data-emoji="🥥" label="🥥 Água de coco"></option>
+								<option value="Energético" data-emoji="⚡" label="⚡ Energético"></option>
+								<option value="Chá gelado" data-emoji="🧋" label="🧋 Chá gelado"></option>
+								<option value="Café pronto" data-emoji="☕" label="☕ Café pronto"></option>
+
+								<!-- Congelados -->
+								<option value="Pizza congelada" data-emoji="🍕" label="🍕 Pizza congelada"></option>
+								<option value="Hambúrguer" data-emoji="🍔" label="🍔 Hambúrguer"></option>
+								<option value="Nuggets" data-emoji="🍗" label="🍗 Nuggets"></option>
+								<option value="Batata congelada" data-emoji="🍟" label="🍟 Batata congelada"></option>
+								<option value="Legumes congelados" data-emoji="🥦" label="🥦 Legumes congelados"></option>
+								<option value="Frutas congeladas" data-emoji="🍓" label="🍓 Frutas congeladas"></option>
+								<option value="Lasanha congelada" data-emoji="🍝" label="🍝 Lasanha congelada"></option>
+								<option value="Pão de queijo" data-emoji="🧀" label="🧀 Pão de queijo"></option>
+								<option value="Açaí" data-emoji="🫐" label="🫐 Açaí"></option>
+								<option value="Sorvete" data-emoji="🍦" label="🍦 Sorvete"></option>
+
+								<!-- Produtos de limpeza -->
+								<option value="Detergente" data-emoji="🧽" label="🧽 Detergente"></option>
+								<option value="Sabão em pó" data-emoji="🧺" label="🧺 Sabão em pó"></option>
+								<option value="Sabão líquido" data-emoji="🧴" label="🧴 Sabão líquido"></option>
+								<option value="Amaciante" data-emoji="🧴" label="🧴 Amaciante"></option>
+								<option value="Água sanitária" data-emoji="🧴" label="🧴 Água sanitária"></option>
+								<option value="Desinfetante" data-emoji="🧴" label="🧴 Desinfetante"></option>
+								<option value="Limpador multiuso" data-emoji="🧴" label="🧴 Limpador multiuso"></option>
+								<option value="Limpa-vidros" data-emoji="🪟" label="🪟 Limpa-vidros"></option>
+								<option value="Limpa piso" data-emoji="🧹" label="🧹 Limpa piso"></option>
+								<option value="Limpa banheiro" data-emoji="🧼" label="🧼 Limpa banheiro"></option>
+								<option value="Esponja" data-emoji="🧽" label="🧽 Esponja"></option>
+								<option value="Palha de aço" data-emoji="🧽" label="🧽 Palha de aço"></option>
+								<option value="Sacos de lixo" data-emoji="🗑️" label="🗑️ Sacos de lixo"></option>
+								<option value="Panos de limpeza" data-emoji="🧽" label="🧽 Panos de limpeza"></option>
+								<option value="Flanela" data-emoji="🧽" label="🧽 Flanela"></option>
+								<option value="Luvas" data-emoji="🧤" label="🧤 Luvas"></option>
+								<option value="Álcool" data-emoji="🧴" label="🧴 Álcool"></option>
+								<option value="Papel toalha" data-emoji="🧻" label="🧻 Papel toalha"></option>
+
+								<!-- Higiene pessoal -->
+								<option value="Papel higiênico" data-emoji="🧻" label="🧻 Papel higiênico"></option>
+								<option value="Sabonete" data-emoji="🧼" label="🧼 Sabonete"></option>
+								<option value="Shampoo" data-emoji="🧴" label="🧴 Shampoo"></option>
+								<option value="Condicionador" data-emoji="🧴" label="🧴 Condicionador"></option>
+								<option value="Creme dental" data-emoji="🪥" label="🪥 Creme dental"></option>
+								<option value="Fio dental"></option>
+								<option value="Enxaguante bucal" data-emoji="🧴" label="🧴 Enxaguante bucal"></option>
+								<option value="Desodorante" data-emoji="🧴" label="🧴 Desodorante"></option>
+								<option value="Algodão" data-emoji="☁️" label="☁️ Algodão"></option>
+								<option value="Cotonete" data-emoji="🧼" label="🧼 Cotonete"></option>
+								<option value="Absorvente" data-emoji="🩹" label="🩹 Absorvente"></option>
+								<option value="Lenços umedecidos" data-emoji="🧻" label="🧻 Lenços umedecidos"></option>
+								<option value="Lenços de papel" data-emoji="🧻" label="🧻 Lenços de papel"></option>
+								<option value="Creme hidratante" data-emoji="🧴" label="🧴 Creme hidratante"></option>
+								<option value="Protetor solar" data-emoji="☀️" label="☀️ Protetor solar"></option>
+								<option value="Barbeador" data-emoji="🪒" label="🪒 Barbeador"></option>
+								<option value="Creme de barbear" data-emoji="🪒" label="🪒 Creme de barbear"></option>
+
+								<!-- Produtos para casa -->
+								<option value="Papel alumínio" data-emoji="🧻" label="🧻 Papel alumínio"></option>
+								<option value="Filme plástico" data-emoji="🧻" label="🧻 Filme plástico"></option>
+								<option value="Papel manteiga" data-emoji="📜" label="📜 Papel manteiga"></option>
+								<option value="Sacos para alimentos" data-emoji="🛍️" label="🛍️ Sacos para alimentos"></option>
+								<option value="Guardanapos" data-emoji="🧻" label="🧻 Guardanapos"></option>
+								<option value="Fósforos" data-emoji="🔥" label="🔥 Fósforos"></option>
+								<option value="Isqueiro" data-emoji="🔥" label="🔥 Isqueiro"></option>
+								<option value="Velas" data-emoji="🕯️" label="🕯️ Velas"></option>
+								<option value="Pregadores" data-emoji="🧺" label="🧺 Pregadores"></option>
+								<option value="Esponjas" data-emoji="🧽" label="🧽 Esponjas"></option>
+								<option value="Sacos para freezer" data-emoji="🛍️" label="🛍️ Sacos para freezer"></option>
+								<option value="Potes descartáveis" data-emoji="🥡" label="🥡 Potes descartáveis"></option>
+								<option value="Copos descartáveis" data-emoji="🥤" label="🥤 Copos descartáveis"></option>
+								<option value="Pratos descartáveis" data-emoji="🍽️" label="🍽️ Pratos descartáveis"></option>
+								<option value="Talheres descartáveis" data-emoji="🍴" label="🍴 Talheres descartáveis"></option>
+
+								<!-- Bebês -->
+								<option value="Fraldas" data-emoji="🧷" label="🧷 Fraldas"></option>
+								<option value="Pomada para assadura" data-emoji="🧴" label="🧴 Pomada para assadura"></option>
+								<option value="Shampoo infantil" data-emoji="🧴" label="🧴 Shampoo infantil"></option>
+								<option value="Sabonete infantil" data-emoji="🧼" label="🧼 Sabonete infantil"></option>
+								<option value="Talco" data-emoji="🧴" label="🧴 Talco"></option>
+								<option value="Papinha" data-emoji="🥣" label="🥣 Papinha"></option>
+								<option value="Leite infantil" data-emoji="🍼" label="🍼 Leite infantil"></option>
+								<option value="Cereal infantil" data-emoji="🥣" label="🥣 Cereal infantil"></option>
+
+								<!-- Produtos para animais -->
+								<option value="Ração para cachorro" data-emoji="🐶" label="🐶 Ração para cachorro"></option>
+								<option value="Ração para gato" data-emoji="🐱" label="🐱 Ração para gato"></option>
+								<option value="Petiscos" data-emoji="🦴" label="🦴 Petiscos"></option>
+								<option value="Areia para gatos" data-emoji="🐈" label="🐈 Areia para gatos"></option>
+								<option value="Sachê" data-emoji="🐾" label="🐾 Sachê"></option>
+								<option value="Ossinhos" data-emoji="🦴" label="🦴 Ossinhos"></option>
+								<option value="Tapete higiênico" data-emoji="🐾" label="🐾 Tapete higiênico"></option>
+								<option value="Produtos de higiene" data-emoji="🧼" label="🧼 Produtos de higiene"></option>
+
+								<!-- Outros -->
+								<option value="Ovos" data-emoji="🥚" label="🥚 Ovos"></option>
+								<option value="Sopas instantâneas" data-emoji="🍜" label="🍜 Sopas instantâneas"></option>
+								<option value="Caldos" data-emoji="🍲" label="🍲 Caldos"></option>
+								<option value="Miojo" data-emoji="🍜" label="🍜 Miojo"></option>
+								<option value="Pipoca de micro-ondas" data-emoji="🍿" label="🍿 Pipoca de micro-ondas"></option>
+							</datalist>
+
+							<label class="field-label" for="product-quantity">Quantidade</label>
+							<input id="product-quantity" name="quantity" type="number" min="1" max="999" value="1" required />
+
+							<button class="add-button" type="submit"><span aria-hidden="true">+</span> Adicionar à lista</button>
+						</form>
+						<p class="storage-note"><span aria-hidden="true">↳</span> Sua lista fica salva neste dispositivo.</p>
+					</aside>
+
+					<section class="list-panel" aria-labelledby="list-title">
+						<div class="list-heading">
+							<div>
+								<span class="section-index">02 / SUA COMPRA</span>
+								<h2 id="list-title">Lista de mercado</h2>
+							</div>
+							<div class="list-actions">
+								<button class="pdf-button" id="save-pending-pdf" type="button"><span aria-hidden="true">↓</span> Salvar pendentes em PDF</button>
+								<button class="clear-button" id="clear-done" type="button" hidden>Limpar concluídos</button>
+							</div>
+						</div>
+
+						<div class="list-toolbar">
+							<div class="filters" role="group" aria-label="Filtrar produtos">
+								<button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">Todos <span id="all-filter-count">0</span></button>
+								<button class="filter-button" type="button" data-filter="pending" aria-pressed="false">Pendentes</button>
+								<button class="filter-button" type="button" data-filter="done" aria-pressed="false">Concluídos</button>
+							</div>
+							<span class="list-hint" id="list-hint">0 produtos</span>
+						</div>
+
+						<ul class="product-list" id="product-list" aria-live="polite"></ul>
+						<div class="empty-state" id="empty-state">
+							<div class="empty-illustration" aria-hidden="true"><span>✳</span></div>
+							<p class="empty-title">Sua lista começa aqui.</p>
+							<p class="empty-copy">Adicione o primeiro produto e deixe as compras mais leves.</p>
+						</div>
+						<div class="list-footer"><span>FEITO PARA FACILITAR A PRÓXIMA IDA AO MERCADO</span><span class="footer-spark" aria-hidden="true">✳</span></div>
+					</section>
+				</div>
+			</main>
+			<section class="print-area" id="print-area" aria-hidden="true"></section>
+			<div class="toast" id="toast" role="status" aria-live="polite"></div>
+		</div>
+	</body>
+</html>
